@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: secktor-md-bot
+    env:
+      OWNER_NAME: $OWNER_NAME
+      ALIVE_MESSAGE: $ALIVE_MESSAGE
+      AUTO_STATUS_SAVER: $AUTO_STATUS_SAVER
+      HEROKU_API_KEY: $HEROKU_API_KEY
+      HEROKU_APP_NAME: $HEROKU_APP_NAME
+      THUMB_IMAGE: $THUMB_IMAGE
+      ANTI_BAD_WORD: $ANTI_BAD_WORD
+      ANTILINK_VALUES: $ANTILINK_VALUES
+      ANTILINK_ACTION: $ANTILINK_ACTION
+      LEVEL_UP_MESSAGE: $LEVEL_UP_MESSAGE
+      READ_MESSAGE: $READ_MESSAGE
+      DISABLE_PM: $DISABLE_PM
+      PREFIX: $PREFIX
+      OWNER_NUMBER: $OWNER_NUMBER
+      SESSION_ID: $SESSION_ID
+      OPENAI_API_KEY: $OPENAI_API_KEY
+      MONGODB_URI: $MONGODB_URI
+      THEME: $THEME
+      WORKTYPE: $WORKTYPE
+      AUTO_REACTION: $AUTO_REACTION
+      PACK_INFO: $PACK_INFO
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    port: 3000
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+    healthCheck:
+      url: /
+      interval: 10s
+      timeout: 5s
+      retries: 3
